@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "425080273257",
+    "firebase_url": "https://drutor-d5b96.firebaseio.com",
+    "project_id": "drutor-d5b96",
+    "storage_bucket": "drutor-d5b96.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:425080273257:android:c7deaca379113e35cee5f8",
+        "android_client_info": {
+          "package_name": "com.example.drutor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "425080273257-e6p0br2p8jhdcdjk607lbi77h0jbv42p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.drutor",
+            "certificate_hash": "adfe0b76a4f5b43a08d9c5323e774c0079e785a8"
+          }
+        },
+        {
+          "client_id": "425080273257-tru2nedt637o61jbtt2i1u18kuhdvjtu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLdYzwlXlR4VI9lwL1nUdxghRE0dS8wVk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "425080273257-tru2nedt637o61jbtt2i1u18kuhdvjtu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
