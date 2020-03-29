@@ -37,6 +37,7 @@
         android:textSize="30sp" />
 
     <ListView
+        android:id="@+id/listViewCustom"
         android:layout_width="match_parent"
         android:layout_height="211dp" />
 
@@ -88,7 +89,7 @@
         android:textAlignment="center" />
 
     <Button
-        android:id="@+id/addstud"
+        android:id="@+id/addless"
         android:layout_width="wrap_content"
         android:layout_height="59dp"
         android:layout_gravity="center"
