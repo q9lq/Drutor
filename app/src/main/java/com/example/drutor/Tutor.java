@@ -1,6 +1,5 @@
 package com.example.drutor;
 
-import java.util.Stack;
 
 public class Tutor {
     private String fullname;
@@ -38,8 +37,7 @@ public class Tutor {
     }
 
     public String getPassword() {
-        return password;
-    }
+        return password;}
 
     public void setPassword(String password) {
         this.password = password;

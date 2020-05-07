@@ -1,12 +1,17 @@
 package com.example.drutor;
 
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,6 +26,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -42,6 +49,9 @@ public class mode<currentDate> extends AppCompatActivity {
     DatabaseReference myRef2 = database.getReference("Students");
     DatabaseReference myRef = database.getReference("Tutors");
 
+    final int SEND_SMS_PERMISSIONS_REQUEST_CODE = 0 ;
+    public static String DAATE;
+    public static String TIIME;
     public static TextView tvdate;
     public static TextView tvtime;
     private TextView textViewTime;
@@ -50,30 +60,66 @@ public class mode<currentDate> extends AppCompatActivity {
     FirebaseUser user;
     Dialog myDilaog;
     String date;
-    ListView lv1;
+    public static ListView lv1;
+    Student s;
+    Lesson lesson;
+    String h1,h2,h3;
+    String ph1,ph2,ph3,msg;
+    Stack<Lesson> ls=new Stack<Lesson>();
+
+    public boolean checkPermission(String permission){
+        int check = ContextCompat.checkSelfPermission(this,permission);
+        return (check == PackageManager.PERMISSION_GRANTED);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mode);
 
+        if(!checkPermission(Manifest.permission.SEND_SMS)){
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, SEND_SMS_PERMISSIONS_REQUEST_CODE);
+        }
+
         lv1=findViewById(R.id.lv1);
-        final ArrayAdapter<String> arrayAdapter1;
-        final ArrayList <String> list1;
-        list1=new ArrayList<String>();
-        arrayAdapter1 = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1,list1);
+        final ArrayList <Lesson> list1;
+        list1=new ArrayList<Lesson>();
+        final LessonListAdapter arrayAdapter1 = new LessonListAdapter(this, R.layout.adapter_view_layout ,list1);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         Button add;
         add=findViewById(R.id.add);
         myDilaog=new Dialog(this);
 
+        Query query1=myRef3.orderByChild("temail").equalTo(user.getEmail());
+        query1.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot d:dataSnapshot.getChildren()){
+                    Lesson lsn,l;
+                    lsn=d.getValue(Lesson.class);
+                    ls.push(l = new Lesson(lsn.getDate(),lsn.getTime()));
+
+                }
+                while(!ls.isEmpty()){
+                    list1.add(ls.pop());
+                    lv1.setAdapter(arrayAdapter1);
+                    arrayAdapter1.notifyDataSetChanged();}
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         add.setOnClickListener(new View.OnClickListener() {
-            int c=0;
-            Stack <String> st = new Stack<String>();
+            int c=0;Stack <String> st = new Stack<String>();
             Stack <String> stemp = new Stack<String>();
 
             Calendar calendar = Calendar.getInstance();
+            ////////////////////////////////////////////////////////
+
             ////////////////////////////////////////////////////////
             private void PickDate() {
                 final java.util.Calendar calendar = java.util.Calendar.getInstance();
@@ -110,7 +156,6 @@ public class mode<currentDate> extends AppCompatActivity {
                 Button addstud;
 
 
-
                 myDilaog.setContentView(R.layout.customaddlesson);
 
                 lv=myDilaog.findViewById(R.id.listViewCustom);
@@ -141,6 +186,16 @@ public class mode<currentDate> extends AppCompatActivity {
                     }
                 });
 
+
+                c=0;
+                while(!stemp.isEmpty()){
+                    stemp.pop();
+                }
+
+                while(!st.isEmpty()){
+                    st.pop();
+                }
+
                 lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -158,21 +213,18 @@ public class mode<currentDate> extends AppCompatActivity {
                         }
                         else {
                             view.setEnabled(true);
-                            String s=st.pop();
-                            while (!st.isEmpty()){
-                            if(!s.equals(list.get(position).toString())){
-                                stemp.push(s); } }
-
-                            while(!stemp.isEmpty()){
-                              st.push(stemp.pop());
-                            }
                             c=c-1;
-
-
-
+                            while(!st.peek().equals(list.get(position).toString())){
+                                stemp.push(st.pop());
+                            }
+                            st.pop();
+                            while(!stemp.isEmpty()){
+                                st.push(stemp.pop());
+                            }
                         }
                     }
                 });
+
 
                 ////////////////////
                 Button addless=(Button) myDilaog.findViewById(R.id.addless);
@@ -180,19 +232,128 @@ public class mode<currentDate> extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                          if(c>0 && tvdate.getText().toString().isEmpty()==false && tvtime.getText().toString().isEmpty()==false){
-                             Lesson lesson = new Lesson(tvtime.getText().toString(),tvdate.getText().toString(),user.getEmail().toString(),st.pop(),st.pop(),st.pop());
+                             if(c==1){
+                                 h1=st.pop(); h2=null; h3=null;
+                                  lesson = new Lesson(tvtime.getText().toString(),tvdate.getText().toString(),user.getEmail().toString(),h1,h2,h3);
+                             }
+                             if(c==2){
+                                 h1=st.pop(); h2=st.pop(); h3=null;
+                                  lesson = new Lesson(tvtime.getText().toString(),tvdate.getText().toString(),user.getEmail().toString(),h1,h2,h3);
+                             }
+                             if(c==3){
+                                 h1=st.pop(); h2=st.pop(); h3=st.pop();
+                                  lesson = new Lesson(tvtime.getText().toString(),tvdate.getText().toString(),user.getEmail().toString(),h1,h2,h3);
+                             }
                              myRef3.push().setValue(lesson);
-                            list1.add(tvdate.getText().toString());
+                             msg=", you have a lesson in: "+lesson.getDate()+" at: "+lesson.getTime();
+
+                             Lesson oh;
+                            list1.add(oh = new Lesson(tvdate.getText().toString(),tvtime.getText().toString()));
                             lv1.setAdapter(arrayAdapter1);
                             arrayAdapter1.notifyDataSetChanged();
+
                             c=0;
                             myDilaog.dismiss();
+                             Query query=myRef2.orderByChild("temail").equalTo(user.getEmail());
+                             query.addListenerForSingleValueEvent(new ValueEventListener() {
+                                 @Override
+                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                     for(DataSnapshot d:dataSnapshot.getChildren()){
+                                         s=d.getValue(Student.class);
+                                         if(h1!=null){
+                                         if(s.getFullname().equals(h1)) {
+                                             ph1=s.getPhonenumer();
+                                             if(checkPermission(Manifest.permission.SEND_SMS)){
+                                                 SmsManager smsManager = SmsManager.getDefault();
+                                                 smsManager.sendTextMessage(ph1,null,"Hello "+s.getFullname()+msg,null,null);
+                                             }
+                                             else{
+                                                 Toast.makeText(mode.this, "denied", Toast.LENGTH_SHORT).show();
+                                             }
+                                             String ln=s.getLessonsNum();
+                                             int i=Integer.parseInt(ln);
+                                             String num=String.valueOf(i+1);
+                                             s.setLessonsNum(num);
+                                             myRef2.child(d.getKey()).setValue(s); }}
+
+                                     }
+                                     Toast.makeText(mode.this, "Info Updated.",Toast.LENGTH_SHORT).show();
+                                 }
+
+                                 @Override
+                                 public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                 }
+                             });
+                             //////
+                             query.addListenerForSingleValueEvent(new ValueEventListener() {
+                                 @Override
+                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                     for(DataSnapshot d:dataSnapshot.getChildren()){
+                                         s=d.getValue(Student.class);
+                                         if(h2!=null){
+                                         if(s.getFullname().equals(h2)) {
+                                             ph1=s.getPhonenumer();
+                                             if(checkPermission(Manifest.permission.SEND_SMS)){
+                                                 SmsManager smsManager = SmsManager.getDefault();
+                                                 smsManager.sendTextMessage(ph1,null,"Hello "+s.getFullname()+msg,null,null);
+                                             }
+                                             else{
+                                                 Toast.makeText(mode.this, "denied", Toast.LENGTH_SHORT).show();
+                                             }
+                                             String ln=s.getLessonsNum();
+                                             int i=Integer.parseInt(ln);
+                                             String num=String.valueOf(i+1);
+                                             s.setLessonsNum(num);
+                                             myRef2.child(d.getKey()).setValue(s);}}
+
+                                     }
+                                     Toast.makeText(mode.this, "Info Updated.",Toast.LENGTH_SHORT).show();
+                                 }
+
+                                 @Override
+                                 public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                 }
+                             });
+                             ////
+                             query.addListenerForSingleValueEvent(new ValueEventListener() {
+                                 @Override
+                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                     for(DataSnapshot d:dataSnapshot.getChildren()){
+                                         s=d.getValue(Student.class);
+                                        if(h3!=null) {
+                                         if(s.getFullname().equals(h3)) {
+                                             ph1=s.getPhonenumer();
+                                             if(checkPermission(Manifest.permission.SEND_SMS)){
+                                                 SmsManager smsManager = SmsManager.getDefault();
+                                                 smsManager.sendTextMessage(ph1,null,"Hello "+s.getFullname()+msg,null,null);
+                                             }
+                                             else{
+                                                 Toast.makeText(mode.this, "denied", Toast.LENGTH_SHORT).show();
+                                             }
+                                             String ln=s.getLessonsNum();
+                                             int i=Integer.parseInt(ln);
+                                             String num=String.valueOf(i+1);
+                                             s.setLessonsNum(num);
+                                             myRef2.child(d.getKey()).setValue(s);}}
+
+                                     }
+                                     Toast.makeText(mode.this, "Info Updated.",Toast.LENGTH_SHORT).show();
+                                 }
+
+                                 @Override
+                                 public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                 }
+                             });
                          }
                          else{
                              Toast.makeText(mode.this, "Info missing!",Toast.LENGTH_SHORT).show();
                          }
                         }
                     });
+
 
                 txtclose=(TextView) myDilaog.findViewById(R.id.txtclose);
                 final Button timepicker=(Button) myDilaog.findViewById(R.id.btn_timepicker);
@@ -210,12 +371,6 @@ public class mode<currentDate> extends AppCompatActivity {
                     }
                 });
 
-
-
-
-
-
-
                 txtclose.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -228,6 +383,7 @@ public class mode<currentDate> extends AppCompatActivity {
             }
         });
         //////////////////////////////////////////////////////////////////////////////////////////
+
         ///////////////////////////////////////////////////////////////////////////////////////////
 
         Calendar calendar = Calendar.getInstance();
@@ -235,10 +391,28 @@ public class mode<currentDate> extends AppCompatActivity {
 
         TextView txtvewd= findViewById(R.id.tv_date);
         txtvewd.setText(currentDate);
+
+        lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
+
+        lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Lesson lll;
+                lll=list1.get(position);
+                DAATE=lll.getDate(); TIIME=lll.getTime();
+                startActivity(new Intent(getApplicationContext(),LessonInfo.class));
+            }
+        });
+
+
+
     }
 
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 }

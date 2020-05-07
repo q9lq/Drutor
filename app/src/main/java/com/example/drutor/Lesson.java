@@ -17,6 +17,16 @@ public class Lesson {
         this.s3 = s3;
     }
 
+    public Lesson() {
+
+    }
+
+    public Lesson(String date , String time) {
+        this.date=date;
+        this.time=time;
+    }
+
+
     public String getTime() {
         return time;
     }

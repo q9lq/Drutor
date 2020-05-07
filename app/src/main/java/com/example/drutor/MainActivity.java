@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
         btn2=findViewById(R.id.btn2);
         btn=findViewById(R.id.btn);
 
-
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed(){}
+
     public void logout(View view) {
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(getApplicationContext(),Login.class));

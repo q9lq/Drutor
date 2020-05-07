@@ -4,41 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/a7"
     tools:context=".StudentsPage">
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="199dp"
-        android:layout_height="53dp"
+        android:layout_width="207dp"
+        android:layout_height="57dp"
+        android:background="@color/turkiz"
+        android:fontFamily="@font/alegreya_sc_black_italic"
+        android:gravity="center"
         android:text="Students"
         android:textAlignment="center"
+        android:textColor="#FFFFFF"
         android:textSize="33sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/lv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.061" />
+        app:layout_constraintVertical_bias="0.611" />
 
     <Button
         android:id="@+id/add"
-        android:layout_width="111dp"
-        android:layout_height="56dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#18778C"
+        android:textColor="#FFFFFF"
         android:text="add"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintVertical_bias="0.948" />
 
     <ListView
         android:id="@+id/lv"
-        android:layout_width="366dp"
-        android:layout_height="431dp"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:layout_width="match_parent"
+        android:layout_height="392dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.656" />
+        app:layout_constraintVertical_bias="0.646">
+
+    </ListView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

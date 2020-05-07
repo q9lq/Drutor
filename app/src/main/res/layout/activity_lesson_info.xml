@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/a7"
+    tools:context=".StudentProfile">
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="190dp"
+        android:layout_height="58dp"
+        android:background="@color/turkiz"
+        android:fontFamily="@font/alegreya_sc_black_italic"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.505" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:drawableLeft="@drawable/date_black_24dp"
+            android:drawablePadding="-70dp"
+            android:paddingLeft="50dp"
+            android:layout_height="64dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Date"
+            android:textAlignment="center"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:drawableLeft="@drawable/time_black_24dp"
+            android:drawablePadding="-70dp"
+            android:paddingLeft="50dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Time"
+            android:textAlignment="center"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/Student1"
+            android:layout_width="match_parent"
+            android:drawableLeft="@drawable/person_black_24dp"
+            android:drawablePadding="-70dp"
+            android:paddingLeft="50dp"
+            android:layout_height="64dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Student1"
+            android:textAlignment="center"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/Student2"
+            android:layout_width="match_parent"
+            android:drawableLeft="@drawable/person_black_24dp"
+            android:drawablePadding="-70dp"
+            android:paddingLeft="50dp"
+            android:layout_height="64dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Student2"
+            android:textAlignment="center"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/Student3"
+            android:layout_width="match_parent"
+            android:drawableLeft="@drawable/person_black_24dp"
+            android:drawablePadding="-70dp"
+            android:paddingLeft="50dp"
+            android:layout_height="64dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Student3"
+            android:textAlignment="center"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="71dp"
+        android:layout_height="50dp"
+        android:background="@drawable/custom_buttton"
+        android:fontFamily="sans-serif-black"
+        android:text="Delete"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.509" />
+
+    <LinearLayout
+        android:layout_width="356dp"
+        android:layout_height="52dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="186dp"
+            android:layout_height="49dp"
+            android:spinnerMode="dialog" />
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="213dp"
+            android:layout_height="49dp"
+            android:spinnerMode="dialog"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

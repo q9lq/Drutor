@@ -6,17 +6,20 @@ public class Student {
     private String Fullname ;
     private String ID;
     private String Phonenumer;
-    private String Notes;
     private String TEmail;
+    private String LessonsNum;
+    private String payedNum;
+
 
     public Student() { }
 
-    public Student(String fullname, String phonenumer, String ID,String TEmail) {
+    public Student(String fullname, String phonenumer, String ID,String TEmail,String LessonsNum, String payedNum) {
         this.Fullname = fullname;
         this.ID = ID;
         this.Phonenumer = phonenumer;
         this.TEmail=TEmail;
-
+        this.LessonsNum=LessonsNum;
+        this.payedNum=payedNum;
     }
 
     public String getFullname() {
@@ -43,16 +46,24 @@ public class Student {
         Phonenumer = phonenumer;
     }
 
-    public String getNotes() {
-        return Notes;
-    }
-
-    public void setNotes(String notes) {
-        Notes = notes;
-    }
-
     public String getTEmail() {
         return TEmail;
+    }
+
+    public String getLessonsNum() {
+        return LessonsNum;
+    }
+
+    public void setLessonsNum(String lessonsNum) {
+        LessonsNum = lessonsNum;
+    }
+
+    public String getPayedNum() {
+        return payedNum;
+    }
+
+    public void setPayedNum(String payedNum) {
+        this.payedNum = payedNum;
     }
 
     public void setTEmail(String TEmail) {

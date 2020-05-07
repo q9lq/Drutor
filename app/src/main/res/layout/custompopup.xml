@@ -3,9 +3,10 @@
     android:orientation="vertical"
     android:layout_width="350dp"
     android:layout_height="400dp"
-    android:background="#2BB7FF"
+    android:background="@color/turkiz"
     android:padding="5dp"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    >
 
     <TextView
         android:id="@+id/txtclose"
@@ -21,9 +22,13 @@
     <TextView
         android:id="@+id/textView9"
         android:layout_width="match_parent"
-        android:layout_height="118dp"
+        android:drawableLeft="@drawable/ic_person_add_black_50dp"
+        android:drawablePadding="-30dp"
+        android:paddingLeft="15dp"
+        android:layout_height="83dp"
         android:text="Add Student"
         android:textAlignment="center"
+        android:gravity="center"
         android:textSize="40sp"
         android:textStyle="bold" />
 
@@ -40,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="phone"
         android:hint="Phone Number" />
 
     <EditText
@@ -48,16 +53,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:hint="ID Number" />
 
+    <EditText
+        android:id="@+id/lnum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="Lessons Number" />
+
+    <EditText
+        android:id="@+id/payed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="Payed Lessons Number" />
+
+
     <Button
-        android:id="@+id/addstud"
-        android:layout_width="wrap_content"
-        android:layout_height="59dp"
-        android:layout_gravity="center"
-        android:textStyle="bold"
-        android:text="Add " />
+    android:id="@+id/addstud"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:backgroundTint="#18778C"
+    android:gravity="center"
+    android:text="add"
+    android:layout_gravity="center"
+    android:textColor="#FFFFFF"
+    android:textSize="18sp"
+    android:textStyle="bold" />
 
 
 </LinearLayout>

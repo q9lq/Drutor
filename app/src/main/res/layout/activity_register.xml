@@ -3,14 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#6CC3BA">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/font"
         android:layout_width="289dp"
         android:layout_height="80dp"
-        android:text="SignUp"
+        android:fontFamily="@font/fugaz_one"
+        android:text="Sign Up"
         android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +47,7 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.252" />
 
     <EditText
         android:id="@+id/e7"
@@ -141,19 +144,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.975" />
+        app:layout_constraintVertical_bias="0.957" />
 
     <Button
         android:id="@+id/b1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/custom_signup"
         android:text="Sign Up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.904" />
+        app:layout_constraintVertical_bias="0.879" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -166,7 +170,7 @@
         app:layout_constraintHorizontal_bias="0.69"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.894" />
+        app:layout_constraintVertical_bias="0.87" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

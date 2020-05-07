@@ -4,91 +4,116 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/a7"
     tools:context=".Profile">
+
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="392dp"
-        android:layout_height="460dp"
+        android:layout_width="353dp"
+        android:layout_height="317dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.615"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6">
+        app:layout_constraintVertical_bias="0.443">
 
         <EditText
             android:id="@+id/et1"
             android:layout_width="match_parent"
-            android:layout_height="88dp"
+            android:layout_height="65dp"
+            android:drawableLeft="@drawable/person_black_24dp"
+            android:drawablePadding="-70dp"
             android:ems="10"
             android:hint="Full Name"
             android:inputType="textPersonName"
+            android:paddingLeft="50dp"
             android:textAlignment="center" />
 
         <EditText
             android:id="@+id/et2"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="65dp"
+            android:drawableLeft="@drawable/phone_in_talk_black_24dp"
+            android:drawablePadding="-70dp"
             android:ems="10"
             android:hint="Phone Number"
-            android:inputType="textPersonName"
+            android:inputType="phone"
+            android:paddingLeft="50dp"
             android:textAlignment="center" />
 
         <EditText
             android:id="@+id/et3"
             android:layout_width="match_parent"
-            android:layout_height="92dp"
+            android:layout_height="65dp"
+            android:drawableLeft="@drawable/nnnn"
+            android:drawablePadding="-85dp"
             android:ems="10"
             android:hint="ID Number"
-            android:inputType="textPersonName"
+            android:inputType="number"
+            android:paddingLeft="45dp"
             android:textAlignment="center" />
 
         <EditText
             android:id="@+id/et4"
             android:layout_width="match_parent"
-            android:layout_height="99dp"
+            android:layout_height="65dp"
+            android:drawableLeft="@drawable/ic_lock_black_24dp"
+            android:drawablePadding="-70dp"
             android:ems="10"
             android:hint="Password"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
+            android:paddingLeft="50dp"
             android:textAlignment="center" />
 
         <EditText
             android:id="@+id/et5"
             android:layout_width="match_parent"
-            android:layout_height="93dp"
+            android:layout_height="65dp"
+            android:drawableLeft="@drawable/money_on_black_24dp"
+            android:drawablePadding="-70dp"
             android:ems="10"
             android:hint="Lesson Price"
-            android:inputType="textPersonName"
+            android:inputType="number"
+            android:paddingLeft="50dp"
             android:textAlignment="center" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="185dp"
-        android:layout_height="59dp"
+        android:layout_width="170dp"
+        android:layout_height="67dp"
+        android:layout_gravity="center"
+        android:background="@color/turkiz"
+        android:fontFamily="@font/alegreya_sc_black_italic"
         android:text="Profile"
         android:textAlignment="center"
-        android:textSize="33sp"
+        android:textColor="#FFFFFF"
+        android:textSize="40sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.539"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.127" />
+        app:layout_constraintVertical_bias="0.052" />
 
     <Button
         android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#18778C"
         android:text="Save"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.566" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.95" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

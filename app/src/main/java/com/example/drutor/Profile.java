@@ -19,18 +19,22 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+
 public class Profile extends AppCompatActivity {
-EditText fullName,phoneN,ID,password,price;
-FirebaseUser user;
-Button save;
-Tutor tutor;
+
+
+    EditText fullName,phoneN,ID,password,price;
+    FirebaseUser user;
+    Button save;
+    Tutor tutor;
+
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("Tutors");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_profile);
+
         fullName=findViewById(R.id.et1);
         phoneN=findViewById(R.id.et2);
         ID=findViewById(R.id.et3);
@@ -65,6 +69,7 @@ Tutor tutor;
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
+
                 tutor.setFullname(fullName.getText().toString());
                 tutor.setPhonenumber(phoneN.getText().toString());
                 tutor.setID(ID.getText().toString());
@@ -89,12 +94,9 @@ Tutor tutor;
                 }
         });
 
+    }//onCreate
 
 
 
 
-
-
-
-    }
 }

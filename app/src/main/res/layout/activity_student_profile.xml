@@ -4,58 +4,142 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/a7"
     tools:context=".StudentProfile">
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="223dp"
-        android:layout_height="68dp"
+        android:layout_width="200dp"
+        android:layout_height="59dp"
+        android:background="@color/turkiz"
+        android:fontFamily="@font/alegreya_sc_black_italic"
+        android:gravity="center"
         android:text="TextView"
         android:textAlignment="center"
+        android:textColor="#FFFFFF"
         android:textSize="35sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.087" />
+        app:layout_constraintVertical_bias="0.657" />
 
     <LinearLayout
-        android:layout_width="406dp"
-        android:layout_height="396dp"
+        android:id="@+id/linearLayout4"
+        android:layout_width="412dp"
+        android:layout_height="369dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.752">
+        app:layout_constraintVertical_bias="0.714">
 
         <EditText
             android:id="@+id/phone"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:drawableLeft="@drawable/phone_in_talk_black_24dp"
+            android:drawablePadding="-70dp"
+            android:paddingLeft="55dp"
+            android:layout_height="60dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Phone-Number" />
+            android:inputType="phone"
+            android:text="Phone-Number"
+            android:textAlignment="center" />
 
         <EditText
             android:id="@+id/id"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:drawableLeft="@drawable/nnnn"
+            android:drawablePadding="-70dp"
+            android:paddingLeft="50dp"
+            android:layout_height="60dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="ID-Number" />
+            android:inputType="number"
+            android:text="ID-Number"
+            android:textAlignment="center" />
 
-        <TextView
+
+        <EditText
             android:id="@+id/LessonsNum"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:textSize="19sp"
-            android:textAlignment="gravity"
+            android:drawableLeft="@drawable/less2"
+            android:drawablePadding="-70dp"
+            android:paddingLeft="50dp"
+            android:layout_height="60dp"
+            android:inputType="number"
+            android:text="Lessons Number"
+            android:textAlignment="center"
+            android:textSize="19sp" />
+
+        <EditText
+            android:id="@+id/PayedLessonsNum"
+            android:layout_width="match_parent"
+            android:drawableLeft="@drawable/lessdonee"
+            android:drawablePadding="-70dp"
+            android:paddingLeft="50dp"
+            android:layout_height="60dp"
+            android:inputType="number"
+            android:text="Payed Lessons Number"
+            android:textAlignment="center"
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/RemainingPayment"
+            android:layout_width="match_parent"
+            android:drawableLeft="@drawable/money_on_black_24dp"
+            android:drawablePadding="-60dp"
+            android:paddingLeft="60dp"
+            android:layout_height="45dp"
             android:inputType="textPersonName"
-            android:text="Lessons Number" />
+            android:text="Remaining Payment"
+            android:textAlignment="center"
+            android:textSize="19sp" />
+
+        <Button
+            android:id="@+id/rdates"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:backgroundTint="#18778C"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Registered Dates"
+            android:textAlignment="center" />
+
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#18778C"
+        android:text="Save"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.151"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
+
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FF0000"
+        android:text="Delete"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.879"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
