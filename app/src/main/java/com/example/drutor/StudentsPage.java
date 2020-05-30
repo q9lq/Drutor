@@ -25,7 +25,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
 public class StudentsPage extends AppCompatActivity {
@@ -39,7 +38,6 @@ public class StudentsPage extends AppCompatActivity {
     Dialog myDilaog;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef2 = database.getReference("Students");
-    DatabaseReference myRef = database.getReference("Tutors");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -3,12 +3,10 @@ package com.example.drutor;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,11 +24,8 @@ public class DatesPage extends AppCompatActivity {
     ListView lv;
     ArrayAdapter<String> arrayAdapter;
     ArrayList<String> listt;
-    Dialog myDilaog;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef3 = database.getReference("Lessons");
-    DatabaseReference myRef2 = database.getReference("Students");
-    DatabaseReference myRef = database.getReference("Tutors");
     FirebaseUser user;
     Lesson l;
     @Override

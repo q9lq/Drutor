@@ -11,10 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class LessonListAdapter extends ArrayAdapter<Lesson> {
-    private static final String TAG = "LessonListAdapter";
     private Context mContext;
     int mResource;
 

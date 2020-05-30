@@ -4,15 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,13 +22,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
+
 
 public class StudentProfile extends AppCompatActivity {
     FirebaseUser user;
-    Dialog myDilaog;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef3 = database.getReference("Lessons");
     DatabaseReference myRef2 = database.getReference("Students");
     DatabaseReference myRef = database.getReference("Tutors");
 

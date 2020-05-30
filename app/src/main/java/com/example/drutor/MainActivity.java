@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Moves user to Lesson's Page "I named it "mode".
                 startActivity(new Intent(getApplicationContext(),mode.class));
             }
         });
@@ -31,21 +32,26 @@ public class MainActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Moves user to Students' Page
                 startActivity(new Intent(getApplicationContext(),StudentsPage.class));
             }
         });
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Moves user to Profile page, his info page.
                 startActivity(new Intent(getApplicationContext(),Profile.class));
             }
         });
     }
 
     @Override
-    public void onBackPressed(){}
+    public void onBackPressed(){
+        //Method to prevent going back by pressing the android "Back" Button.
+    }
 
     public void logout(View view) {
+        //When pressed on Logout button, The application logs out of this account.
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(getApplicationContext(),Login.class));
         finish();

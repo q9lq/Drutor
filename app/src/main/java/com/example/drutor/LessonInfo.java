@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,20 +24,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LessonInfo extends AppCompatActivity {
     FirebaseUser user;
-    Dialog myDilaog;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef3 = database.getReference("Lessons");
     DatabaseReference myRef2 = database.getReference("Students");
-    DatabaseReference myRef = database.getReference("Tutors");
 
     TextView tv,date,time,std1,std2,std3;
-    Button delete,back;
+    Button delete;
     Lesson l;
     Student s;
     String s1,s2,s3;

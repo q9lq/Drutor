@@ -21,7 +21,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Register extends AppCompatActivity {
-    EditText e1,e2,e3,e4,e5,e6,e7,e8;
+    EditText e1,e2,e3,e4,e5,e6,e7,e8;//הזנת המידע של מורה חדש
+    //בדיקת תאי המידע המוכנס, אם אין שגיאה\תאים פנויים החשבון יוצר בהצלחה ואובייקט מסוג מורה יוכנס אל מדס הניתוהים
     Button b1;
     TextView tv2;
     ProgressBar progressBar;
@@ -30,6 +31,7 @@ public class Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
         e1=findViewById(R.id.e1);
         e2=findViewById(R.id.e2);
         e3=findViewById(R.id.e3);

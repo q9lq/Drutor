@@ -2,11 +2,9 @@ package com.example.drutor;
 
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -18,7 +16,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import java.util.ArrayList;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -54,7 +51,6 @@ public class mode<currentDate> extends AppCompatActivity {
     public static String TIIME;
     public static TextView tvdate;
     public static TextView tvtime;
-    private TextView textViewTime;
     private TimePickerDialog timePickerDialog;
     private DatePickerDialog datePickerDialog;
     FirebaseUser user;
@@ -113,6 +109,8 @@ public class mode<currentDate> extends AppCompatActivity {
             }
         });
 
+/////////////////////////////////////////////////////////////////////////////////////////
+
         add.setOnClickListener(new View.OnClickListener() {
             int c=0;Stack <String> st = new Stack<String>();
             Stack <String> stemp = new Stack<String>();
@@ -163,7 +161,7 @@ public class mode<currentDate> extends AppCompatActivity {
                 final ArrayList <String> list;
                 list=new ArrayList<String>();
                 arrayAdapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1,list);
-
+                lv.setAdapter(arrayAdapter);
                  tvdate=(TextView) myDilaog.findViewById(R.id.tvdate);
                  tvtime=(TextView) myDilaog.findViewById(R.id.tvtime);
 
@@ -175,9 +173,10 @@ public class mode<currentDate> extends AppCompatActivity {
                             Student student;
                             student=d.getValue(Student.class);
                             list.add(student.getFullname());
-                            lv.setAdapter(arrayAdapter);
-                            arrayAdapter.notifyDataSetChanged();
+
+
                         }
+                        arrayAdapter.notifyDataSetChanged();
                     }
 
                     @Override
@@ -206,7 +205,7 @@ public class mode<currentDate> extends AppCompatActivity {
                             c=c+1;
                             Toast.makeText(mode.this, c+" Added",Toast.LENGTH_SHORT).show();}
 
-                            else{
+                            else{ 
                                 Toast.makeText(mode.this, "Can't add more!",Toast.LENGTH_SHORT).show();
 
                             }
@@ -227,6 +226,30 @@ public class mode<currentDate> extends AppCompatActivity {
 
 
                 ////////////////////
+                txtclose=(TextView) myDilaog.findViewById(R.id.txtclose);
+                final Button timepicker=(Button) myDilaog.findViewById(R.id.btn_timepicker);
+                timepicker.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        PickTime();
+                    }
+                });
+                final Button datepicker=(Button) myDilaog.findViewById(R.id.btn_datepicker);
+                datepicker.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        PickDate();
+                    }
+                });
+
+                txtclose.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        c=0;
+                        myDilaog.dismiss();
+                    }
+                });
+                ///////////////////
                 Button addless=(Button) myDilaog.findViewById(R.id.addless);
                     addless.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -247,8 +270,8 @@ public class mode<currentDate> extends AppCompatActivity {
                              myRef3.push().setValue(lesson);
                              msg=", you have a lesson in: "+lesson.getDate()+" at: "+lesson.getTime();
 
-                             Lesson oh;
-                            list1.add(oh = new Lesson(tvdate.getText().toString(),tvtime.getText().toString()));
+
+                            list1.add(new Lesson(tvdate.getText().toString(),tvtime.getText().toString()));
                             lv1.setAdapter(arrayAdapter1);
                             arrayAdapter1.notifyDataSetChanged();
 
@@ -355,29 +378,7 @@ public class mode<currentDate> extends AppCompatActivity {
                     });
 
 
-                txtclose=(TextView) myDilaog.findViewById(R.id.txtclose);
-                final Button timepicker=(Button) myDilaog.findViewById(R.id.btn_timepicker);
-                timepicker.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        PickTime();
-                    }
-                });
-                final Button datepicker=(Button) myDilaog.findViewById(R.id.btn_datepicker);
-                datepicker.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        PickDate();
-                    }
-                });
 
-                txtclose.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        c=0;
-                        myDilaog.dismiss();
-                    }
-                });
 
                 myDilaog.show();
             }
@@ -395,17 +396,18 @@ public class mode<currentDate> extends AppCompatActivity {
         lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-        });
-
-        lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//When Item is clicked, "Lesson Info Page" opens, and Selected lesson's info appears according to the clicked item.
                 Lesson lll;
                 lll=list1.get(position);
-                DAATE=lll.getDate(); TIIME=lll.getTime();
+                DAATE=lll.getDate();
+//this public Parameter will be used in "Lesson Info Page" to help finding the pressed Lesson.
+
+                TIIME=lll.getTime();
+//this public Parameter will be used in "Lesson Info Page" to help finding the pressed Lesson.
+
+
                 startActivity(new Intent(getApplicationContext(),LessonInfo.class));
+//Moving to "Lesson Info Page".
             }
         });
 
@@ -413,6 +415,5 @@ public class mode<currentDate> extends AppCompatActivity {
 
     }
 
-
-
 }
+
